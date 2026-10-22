@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOKUL | AI & ML Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // blue-500
+                        secondary: '#8b5cf6', // violet-500
+                        dark: '#0f172a', // slate-900
+                        card: '#1e293b', // slate-800
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Behind everything */
+            pointer-events: auto;
+        }
+        /* Ensure content sits above particles */
+        .content-layer {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white relative">
+
+    <!-- Interactive Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold tracking-tighter hover:text-primary transition-colors">
+                        GOKUL<span class="text-primary">.</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="hover:text-primary transition-colors px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#skills" class="hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#projects" class="hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#contact" class="hover:text-primary transition-colors px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#home" class="mobile-link block hover:bg-gray-700/50 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="mobile-link block hover:bg-gray-700/50 px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="mobile-link block hover:bg-gray-700/50 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects" class="mobile-link block hover:bg-gray-700/50 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="mobile-link block hover:bg-gray-700/50 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 content-layer">
+        <div class="max-w-4xl mx-auto text-center glass-panel p-10 md:p-16 rounded-3xl border border-gray-700/50 shadow-2xl">
+            <p class="text-primary font-medium tracking-wide mb-3 uppercase">Hello, I'm</p>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                <span class="gradient-text">GOKUL</span>
+            </h1>
+            <h2 class="text-xl md:text-3xl font-medium text-gray-300 mb-6">
+                B.Tech AI & ML Student at <span class="text-white font-semibold">Alliance University</span>
+            </h2>
+            <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Passionate about Artificial Intelligence, Data Science, and shaping the future as a Machine Learning Engineer. I am actively seeking internships and roles to build models that learn and systems that scale.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition-all transform hover:-translate-y-1 shadow-lg shadow-blue-500/30">
+                    View Projects
+                </a>
+                <a href="https://github.com/" target="_blank" class="w-full sm:w-auto px-8 py-3 bg-card/80 backdrop-blur-sm hover:bg-gray-700 border border-gray-600 text-white rounded-full font-medium transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-github text-xl"></i> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/gokul-b-14075a42a/" target="_blank" class="w-full sm:w-auto px-8 py-3 bg-card/80 backdrop-blur-sm hover:bg-gray-700 border border-gray-600 text-white rounded-full font-medium transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-linkedin text-xl text-[#0A66C2]"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Skills Section -->
+    <section id="about" class="py-20 content-layer glass-panel border-y border-gray-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- About Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fas fa-user-astronaut text-primary"></i> About Me
+                    </h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        I am currently pursuing my B.Tech in Artificial Intelligence and Machine Learning at Alliance University. My academic journey is driven by a deep fascination with how data can be leveraged to solve complex, real-world problems.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        Whether it's training neural networks, analyzing datasets, or building scalable API backends, I am always eager to learn and implement cutting-edge technologies. I am actively searching for internships and entry-level roles to bridge the gap between my theoretical knowledge and practical engineering.
+                    </p>
+                </div>
+
+                <!-- Skills Section inside About block for layout -->
+                <div id="skills" class="bg-card/90 backdrop-blur-md p-8 rounded-2xl border border-gray-700 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                        <i class="fas fa-code text-secondary"></i> Technical Arsenal
+                    </h3>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <!-- Skill Tag -->
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fab fa-python text-yellow-400"></i>
+                            <span class="font-medium">Python</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-chart-line text-blue-400"></i>
+                            <span class="font-medium">Matplotlib</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-square-root-variable text-orange-500"></i>
+                            <span class="font-medium">MATLAB</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-bolt text-teal-400"></i>
+                            <span class="font-medium">FastAPI</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fab fa-git-alt text-red-500"></i>
+                            <span class="font-medium">Git</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fab fa-github text-white"></i>
+                            <span class="font-medium">GitHub</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-file-code text-blue-500"></i>
+                            <span class="font-medium">C++</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-brain text-pink-400"></i>
+                            <span class="font-medium">Machine Learning</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 bg-dark/80 border border-gray-700 rounded-lg shadow-sm hover:border-primary transition-colors cursor-default">
+                            <i class="fas fa-database text-gray-300"></i>
+                            <span class="font-medium">Data Science</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 content-layer bg-transparent">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 glass-panel inline-block px-10 py-6 rounded-3xl border border-gray-700/50">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4"> 
+                    Featured Projects</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-300 max-w-2xl mx-auto">A selection of my college coursework and personal side projects focused on Data Science, Machine Learning, and Hardware Integration.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">  
+            <!-- Project 1: Water Level Sensor -->
+                       <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named water-level-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/water-level-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-yellow-900/50 text-yellow-400 rounded">Hardware Integration</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Arduino Water Level Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Engineered a real-time water level detection system using an Arduino UNO. Integrated a fluid sensor with a breadboard LED array to provide instant visual feedback as water levels change.
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Voltage Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named voltage-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/voltage-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-yellow-900/50 text-yellow-400 rounded">Electronics</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Arduino Voltage Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Developed a custom voltage measurement tool using an Arduino. The system reads the voltage of external power sources (like a 9V battery), outputs real-time data to a serial monitor, and incorporates LED indicators on a breadboard.
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Vibration Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named vibration-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/vibration-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-red-900/50 text-red-400 rounded">Sensors</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">SW-420 Vibration Switch Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Implemented a vibration detection system using an SW-420 sensor and an Arduino[cite: 4]. The circuit is designed to detect physical impacts (like tapping the desk) and trigger an immediate LED response to demonstrate real-time environmental monitoring[cite: 4].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4: Ultrasonic Distance Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named ultrasonic-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/ultrasonic-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-yellow-900/50 text-yellow-400 rounded">HC-SR04</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">HC-SR04 Ultrasonic Distance Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Designed a contactless distance measurement system using an HC-SR04 ultrasonic sensor paired with an Arduino[cite: 6]. The setup detects nearby objects dynamically and triggers visual indicator LEDs on the breadboard[cite: 6].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5: Tracking Module -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named tracking-module.mp4 inside the videos folder -->
+                            <source src="./videos/tracking-module.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-purple-900/50 text-purple-400 rounded">Robotics</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Arduino Line Tracking Module</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Configured a tracking module sensor with an Arduino and breadboard circuit[cite: 7]. The system detects surface contrasts—such as hovering over a black strip—and processes this input in real-time to trigger an LED indicator, laying the groundwork for line-following robotics[cite: 7].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 6: Temperature & Humidity Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named temp-humidity-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/temp-humidity-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-orange-900/50 text-orange-400 rounded">DHT Sensor</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Environmental Data Monitor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Programmed an Arduino to interface with a DHT temperature and humidity sensor[cite: 8]. The system continuously reads environmental conditions and logs real-time humidity percentages and temperature metrics (in both Celsius and Fahrenheit) directly to the serial monitor[cite: 8].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 7: Speed Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named speed-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/speed-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-purple-900/50 text-purple-400 rounded">Hardware</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">C++</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Arduino Speed Sensor Module</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Integrated an optical speed sensor module with an Arduino and breadboard circuit[cite: 9]. This setup is designed to detect rotational speed or object interruptions, processing the signals to trigger a real-time LED response[cite: 9].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 8: IR Remote Control -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named ir-remote.mp4 inside the videos folder -->
+                            <source src="./videos/ir-remote.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-gray-900/50 text-gray-400 rounded">Infrared</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">IR Remote Decoder</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Configured an IR receiver to decode infrared signals from a standard remote control[cite: 10]. The system processes the incoming hex codes to trigger corresponding LED states on the breadboard[cite: 10].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 9: PIR Motion Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named pir-motion.mp4 inside the videos folder -->
+                            <source src="./videos/pir-motion.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-purple-900/50 text-purple-400 rounded">PIR Sensor</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Motion Detection System</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Implemented a Passive Infrared (PIR) motion sensor to detect ambient movement[cite: 11]. The Arduino reads the sensor's digital output to automate a responsive LED circuit[cite: 11].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 10: Seismograph / Vibration Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named seismograph.mp4 inside the videos folder -->
+                            <source src="./videos/seismograph.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-yellow-900/50 text-yellow-400 rounded">Vibration</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Prototype Seismograph</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Built a prototype seismograph using a highly sensitive vibration sensor designed to detect simulated earthquake tremors[cite: 12]. Physical impacts immediately trigger a visual LED alert system[cite: 12].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 11: Audio Reactive Sound Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named sound-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/sound-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-pink-900/50 text-pink-400 rounded">Audio Processing</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Music-Reactive Lighting</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Programmed a microphone sound sensor module to actively listen to environmental audio[cite: 13]. The system reacts to music playback in real-time, syncing the breadboard LEDs to the audio frequencies[cite: 13].
+                        </p>
+                    </div>
+                </div>
+                <!-- Project 12: Light Sensor & Buzzer -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named light-buzzer.mp4 inside the videos folder -->
+                            <source src="./videos/light-buzzer.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-orange-900/50 text-orange-400 rounded">Optical</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Darkness Alarm System</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Developed a darkness detection system using a light-dependent sensor[cite: 14]. When an object blocks the ambient light, the Arduino logs the event and immediately activates an audible buzzer and LED warning system[cite: 14].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 13: Capacitive Touch Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named touch-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/touch-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-indigo-900/50 text-indigo-400 rounded">Capacitive</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Capacitive Touch Interface</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Integrated a capacitive touch sensor module into an Arduino circuit[cite: 15]. The sensor registers physical human contact to seamlessly toggle the state of an LED, demonstrating fundamental interactive hardware design[cite: 15].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 14: Optical Darkness Logger -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named darkness-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/darkness-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-gray-900/50 text-gray-400 rounded">Data Logging</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Optical Proximity Logger</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Engineered an optical proximity circuit that continuously monitors light levels[cite: 16]. When obscured, the system prints "Darkness detected" to the serial monitor and activates visual indicators[cite: 16].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 15: Barometric Pressure Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named pressure-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/pressure-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-blue-900/50 text-blue-400 rounded">Environmental</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Atmospheric Pressure Monitor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Interfaced a precision pressure sensor with an Arduino to measure atmospheric conditions[cite: 17]. The script calculates and logs real-time barometric pressure data in Pascals directly to the serial monitor[cite: 17].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 16: Rain / Liquid Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named rain-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/rain-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-cyan-900/50 text-cyan-400 rounded">Fluid Dynamics</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Conductive Rain Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Utilized a conductive rain sensor panel to monitor environmental moisture[cite: 18]. The system detects the presence of liquid droplets on the grid and triggers real-time circuit feedback[cite: 18].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 17: Laser/IR Break Beam -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named laser-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/laser-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-red-900/50 text-red-400 rounded">Laser/IR</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Break-Beam Detection System</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Set up an emitter and receiver module designed to create an invisible detection threshold[cite: 19]. The Arduino processes the connection state to determine when the optical beam has been broken by an object[cite: 19].
+                        </p>
+                    </div>
+                </div>
+                 <!-- Project 18: Tilt Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named tilt-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/tilt-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-yellow-900/50 text-yellow-400 rounded">Orientation</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Digital Tilt Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Programmed a digital tilt sensor with an Arduino to detect physical orientation changes[cite: 20]. The system reads the digital input to instantly toggle an LED on the breadboard when the sensor module is tilted[cite: 20].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 19: Magnetic Sensor -->
+                <div class="bg-card/90 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 group flex flex-col">
+                    <div class="h-48 overflow-hidden bg-black relative flex items-center justify-center">
+                        <video controls class="w-full h-full object-cover">
+                            <!-- Ensure your video is named magnetic-sensor.mp4 inside the videos folder -->
+                            <source src="./videos/magnetic-sensor.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2 py-1 bg-teal-900/50 text-teal-400 rounded">Arduino</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-red-900/50 text-red-400 rounded">Magnetic</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Hall Effect Magnetic Sensor</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            Designed a magnetic detection circuit using a Hall Effect sensor[cite: 21]. The Arduino script processes the sensor's input to trigger a breadboard LED response whenever a magnetic field is introduced in close proximity[cite: 21].
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <a href="#" class="text-primary hover:text-white transition-colors text-sm font-medium flex items-center gap-1">
+                                Details <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>    
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 content-layer glass-panel border-t border-gray-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                I'm actively seeking ML/AI internships and roles. Whether you have an opportunity or just want to discuss tech, my inbox is always open!
+            </p>
+            
+            <div class="bg-card/90 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-gray-700 shadow-2xl inline-block w-full max-w-lg mx-auto">
+                <i class="fas fa-envelope-open-text text-5xl text-primary mb-6"></i>
+                <h3 class="text-2xl font-bold mb-2">Send me an email</h3>
+                <p class="text-gray-400 mb-8 break-all font-mono">gokulbalamurugan3@gmail.com</p>
+                
+                <a href="mailto:gokulbalamurugan3@gmail.com" class="inline-flex items-center justify-center gap-2 w-full px-8 py-4 bg-primary hover:bg-blue-600 text-white rounded-xl font-bold transition-all shadow-lg shadow-blue-500/30">
+                    <i class="fas fa-paper-plane"></i> Say Hello
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-card/80 backdrop-blur-lg border-t border-gray-800 py-10 content-layer">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-400 text-sm">
+                &copy; <span id="year"></span> GOKUL. All rights reserved.
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="https://github.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/gokul-b-14075a42a/" target="_blank" class="text-gray-400 hover:text-[#0A66C2] transition-colors" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="mailto:gokulbalamurugan3@gmail.com" class="text-gray-400 hover:text-white transition-colors" aria-label="Email">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+        </div>
+       
+    </footer>
+
+    <!-- Particles Initialization and Scripts -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Particles.js Config for Neural Network effect
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 60,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#3b82f6", "#8b5cf6"] // Primary and Secondary colors
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.6,
+                    "random": false,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3b82f6",
+                    "opacity": 0.3,
+                    "width": 1.2
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 180,
+                        "line_linked": {
+                            "opacity": 0.8
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
